@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang=en>
+<!--begin::Head-->
+<head>
+    <title>Module Handbook - Faculty of Information Technology - VNUHCM-University of Science</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Khoa CNTN, Truong DH KHTN, DHQG-HCM" />
+    <meta name="keywords" content="Khoa CNTT, Truong DH KHTN" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Faculty of Information Technology - VNUHCM-University of Science" />
+    <meta property="og:image" content="https://www.fit.hcmus.edu.vn/media/photos/fit-logo-truong.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:heitht" content="800" />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V1TN16GB6T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V1TN16GB6T');
+    </script>
+
+</head>
+
+
+<!--end::Head-->
+<!--begin::Body-->
+<body id=sb_app_body class=''>
+
+    
+<div class="content-wrapper">
+    
+
+<input type="hidden" value="/undergraduate%2Fmodule-handbook" />
+
+<section class="wrapper bg-light">
+    <div class="container pb-8">
+        <div class="row gx-lg-4">
+            <div class="col-md-3">
+                
+                <div class="card mb-4">
+                    <div class="card-header text-center"><strong>Majors</strong></div>
+                    <div class="card-body p-5">
+                        <ul class="icon-list bullet-bg bullet-soft-green mb-0" data-bind="foreach: dsMajors">
+                            <li>
+                                <i class="uil uil-check"></i>
+                                <span class="clickable" data-bind="text: name, click: $root.showMajor, css: { 'fw-bold': $root.currentMajor() === $data.key }"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4" style="display: none;" data-bind="visible: currentView() === 'DETAILS'">
+                    <div class="card-header text-center"><strong>Course Details</strong></div>
+                    <div class="card-body p-5">
+                        <ul class="icon-list bullet-primary mb-0">
+                            <li>
+                                <i class="uil uil-arrow-right"></i>
+                                <span class="clickable" data-bind="click: viewHandbook, css: { 'fw-bold': detailsView() === 'HANDBOOK' }">Module Handbook</span>
+                            </li>
+                            <li>
+                                <i class="uil uil-arrow-right"></i>
+                                <span class="clickable" data-bind="click: viewSummary, css: { 'fw-bold': detailsView() === 'SUMMARY' }">Course Summary</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="aCourses" class="accordion accordion-wrapper" data-bind="visible: currentView() === 'LIST'">
+                    <div class="card accordion-item">
+                        <div class="card-header" id="headingRC1">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#RC1_Name" aria-expanded="true" aria-controls="RC1_Name">
+                                General education (compulsory)
+                            </button>
+                        </div>
+                        <div id="RC1_Name" class="accordion-collapse collapse show" aria-labelledby="headingRC1" data-bs-parent="#aCourses">
+                            <div class="card-body ps-4">
+                                <ol data-bind="foreach: dsCourses_RC1">
+                                    <li><span data-bind="text: fullName, click: $root.viewDetails" class="clickable"></span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accordion-item">
+                        <div class="card-header" id="headingRC2">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#RC2_Name" aria-expanded="true" aria-controls="RC2_Name">
+                                General education (elective)
+                            </button>
+                        </div>
+                        <div id="RC2_Name" class="accordion-collapse collapse" aria-labelledby="headingRC2" data-bs-parent="#aCourses">
+                            <div class="card-body ps-4">
+                                <ol data-bind="foreach: dsCourses_RC2">
+                                    <li><span data-bind="text: fullName, click: $root.viewDetails" class="clickable"></span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accordion-item">
+                        <div class="card-header" id="headingRC3">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#RC3_Name" aria-expanded="false" aria-controls="RC3_Name">
+                                Pre-major requirements (compulsory)
+                            </button>
+                        </div>
+                        <div id="RC3_Name" class="accordion-collapse collapse" aria-labelledby="headingRC3" data-bs-parent="#aCourses">
+                            <div class="card-body ps-4">
+                                <ol data-bind="foreach: dsCourses_RC3">
+                                    <li><span data-bind="text: fullName, click: $root.viewDetails" class="clickable"></span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accordion-item">
+                        <div class="card-header" id="headingRC4">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#RC4_Name" aria-expanded="false" aria-controls="RC4_Name">
+                                Major requirements (elective)
+                            </button>
+                        </div>
+                        <div id="RC4_Name" class="accordion-collapse collapse" aria-labelledby="headingRC3" data-bs-parent="#aCourses">
+                            <div class="card-body ps-4">
+                                <ol data-bind="foreach: dsCourses_RC4">
+                                    <li><span data-bind="text: fullName, click: $root.viewDetails" class="clickable"></span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card accordion-item">
+                        <div class="card-header">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#RC5_Name" aria-expanded="false" aria-controls="RC5_Name">
+                                Graduation requirements (elective)
+                            </button>
+                        </div>
+                        <div id="RC5_Name" class="accordion-collapse collapse" aria-labelledby="headingRC5" data-bs-parent="#aCourses">
+                            <div class="card-body ps-4">
+                                <ol data-bind="foreach: dsCourses_RC5">
+                                    <li><span data-bind="text: fullName, click: $root.viewDetails" class="clickable hover"></span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div style="display: none;" data-bind="visible: currentView() === 'DETAILS'">
+                    <div class="card" data-bind="visible: detailsView() === 'SUMMARY'">
+                        <div class="card-header">
+                            <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                                <span>Course Summary</span>
+                                <span class="clickable" data-bind="click: viewList"><i class="uil uil-angle-left"></i>View list</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="text-center" data-bind="text: thisCourse().course.fullName"></h2>
+                            <div class="mt-5">
+                                <h4>GENERAL INFORMATION</h4>
+                                <dl class="row">
+                                    <dt class="col-sm-3 text-md-right">Course ID:</dt>
+                                    <dd class="col-sm-9"><strong data-bind="text: thisCourse().course.maMH"></strong></dd>
+
+                                    <dt class="col-sm-3 text-md-right">Course name (English):</dt>
+                                    <dd class="col-sm-9"><strong data-bind="text: thisCourse().course.nameEN"></strong></dd>
+
+                                    <dt class="col-sm-3 text-md-right">Course name (Vietnamese):</dt>
+                                    <dd class="col-sm-9"><strong data-bind="text: thisCourse().course.nameVN"></strong></dd>
+
+                                    <dt class="col-sm-3 text-md-right">Relation to curriculum:</dt>
+                                    <dd class="col-sm-9"><strong data-bind="text: thisCourse().course.relationToCurriculum"></strong></dd>
+
+                                    <dt class="col-sm-3 text-md-right">Credit points:</dt>
+                                    <dd class="col-sm-9"><strong data-bind="text: thisCourse().course.credits"></strong>&nbsp;credits (Theory: <strong data-bind="text: thisCourse().course.theory"></strong>; Laboratory: <strong data-bind="text: thisCourse().course.lab"></strong>) / ~ <strong data-bind="text: thisCourse().course.ects"></strong>&nbsp;ECTS credits</dd>
+
+                                    <dt class="col-sm-3 text-md-right">Prior course(s):</dt>
+                                    <dd class="col-sm-9"></dd>
+                                </dl>
+                            </div>
+
+                            <div class="mt-5">
+                                <h4>COURSE DESCRIPTION</h4>
+                                <div data-bind="html: thisCourse().course.description"></div>
+                            </div>
+
+                            <div class="mt-5" data-bind="visible: thisCourse().topics.length > 0">
+                                <h4>COURSE TOPICS</h4>
+                                <ol style="padding-left: 15px;" data-bind="foreach: thisCourse().topics">
+                                    <li data-bind="html: $data.topics, visible: $data.topics"></li>
+                                </ol>
+                            </div>
+
+                            <div class="mt-5" data-bind="visible: thisCourse().goals.length > 0">
+                                <h4>COURSE GOALS</h4>
+                                <p class="mb-0">On successful completion of this course, students will be able to:</p>
+                                <ul style="padding-left: 0; list-style-type: none;" data-bind="foreach: thisCourse().goals">
+                                    <li data="visible: visible: $data.goals"><span data-bind="text: $data.goals"></span>.&nbsp;<span data-bind="html: $data.statement"></span></li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-5" data-bind="visible: thisCourse().readingList.length > 0">
+                                <h4>REQUIRED AND RECOMMENDED READING</h4>
+                                <ul style="list-style-type: none; padding: 0; margin: 0;" data-bind="foreach: thisCourse().readingList">
+                                    <li>[<span data-bind="text: $index() + 1"></span>] <span data-bind="text: tenGT"></span><span data-bind="visible: tacGia">, <span data-bind="text: tacGia"></span></span><span data-bind="visible: namXuatBan">, <span data-bind="text: namXuatBan"></span></span><span data-bind="visible: nhaXuatBan">, <span data-bind="text: nhaXuatBan"></span></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-bind="visible: detailsView() === 'HANDBOOK'">
+                        <div class="card-header px-4">
+                            <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                                <span>Module Handbook</span>
+                                <span class="clickable" data-bind="click: viewList"><i class="uil uil-angle-left"></i>View list</span>
+                            </div>
+                        </div>
+                        <table class="table table-bordered mb-0">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Module designation</strong></td>
+                                    <td>
+                                        <p class="pb-0 mb-0">Course name (English): <span data-bind="text: thisCourse().course.nameEN"></span></p>
+                                        <p class="pb-0 mb-0">Course name (Vietnamese): <span data-bind="text: thisCourse().course.nameVN"></span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Semester(s) in which the module is taught</strong></td>
+                                    <td data-bind="text: thisCourse().course.semester"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Person responsible for the module</strong></td>
+                                    <td data-bind="text: thisCourse().course.lecturer"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Language</strong></td>
+                                    <td data-bind="text: thisCourse().course.language"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Relation to curriculum</strong></td>
+                                    <td data-bind="text: thisCourse().course.relationToCurriculum"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Teaching methods</strong></td>
+                                    <td data-bind="html: thisCourse().course.teachingMethods"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Workload (incl. contact hours, self-study hours)</strong></td>
+                                    <td>
+                                        <p class="pb-0 mb-0">Hours for lecture: ~ <span data-bind="text: thisCourse().course.workload_Lec"></span>&nbsp;hours</p>
+                                        <p class="pb-0 mb-0">Hours for laboratory session: ~ <span data-bind="text: thisCourse().course.workload_Lab"></span>&nbsp;hours</p>
+                                        <p class="pb-0 mb-0">Hours for self-study, examination preparation, other activities: ~ <span data-bind="text: thisCourse().course.workload_SelfStudy"></span>&nbsp;hours</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Credit points</strong></td>
+                                    <td><span data-bind="text: thisCourse().course.credits"></span>&nbsp;credits (~ <span data-bind="text: thisCourse().course.ects"></span>&nbsp;ECTS credits)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Required and recommended prerequisites for joining the module</strong></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Module objectives/intended learning outcomes</strong></td>
+                                    <td>
+                                        <ul style="padding: 0; list-style-type: none;" data-bind="foreach: thisCourse().goals">
+                                            <li><span data-bind="text: $data.goals"></span>.&nbsp;<span data-bind="html: $data.statement"></span></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Content</strong></td>
+                                    <td>
+                                        <ul style="padding-left: 2rem;" data-bind="foreach: thisCourse().topics">
+                                            <li data-bind="html: $data.topics, visible: $data.topics"></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Examination forms</strong></td>
+                                    <td data-bind="html: thisCourse().course.assessment"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Study and examination requirements</strong></td>
+                                    <td>
+                                        <p><strong>REGULATIONS</strong></p>
+                                        <ul style="padding-left: 2rem;">
+                                            <li>All students are responsible for reading and following strictly the regulations and policies of the school and university.</li>
+                                            <li>Students who are absent for more than 3 theory sessions are not allowed to take the exams.</li>
+                                            <li>For any kind of cheating and plagiarism, students will be graded 0 for the course. The incident is then submitted to the school and university for further review.</li>
+                                            <li>Students are encouraged to form study groups to discuss on the topics. However, individual work must be done and submitted on your own.</li>
+                                        </ul>
+
+                                        <p><strong>POLICIES</strong></p>
+                                        <p><strong>Class Attendance and Participation</strong></p>
+                                        <ul style="padding-left: 2rem;">
+                                            <li>Regular class attendance is strongly advised and is necessary for students to fully grasp many of the course concepts.</li>
+                                            <li>Please be on time to class.</li>
+                                            <li>If you miss a class session, it will be your responsibility to find out the materials that were covered.</li>
+                                            <li>Students in attendance are expected to be active participants in the course. The participation includes contributing to class discussions, providing insight into the class discussion topics, raising questions, and relating class material to personal experiences and other course topics.</li>
+                                        </ul>
+
+                                        <p><strong>Computer Usage</strong></p>
+                                        <ul style="padding-left: 2rem;">
+                                            <li>Moodle and e-mail will be used to communicate with students and disseminate materials and assignments throughout the course. So, students should check Moodle and their email at least once per day.</li>
+                                            <li>When sending e-mail to the instructor, please begin the Subject of the message with the following format: [Course ID]&lt;space&gt;. For example, "[CSC10001] Ask for additional materials".</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Reading list</strong></td>
+                                    <td>
+                                        <ul style="list-style-type: none; padding: 0; margin: 0;" data-bind="foreach: thisCourse().readingList">
+                                            <li>[<span data-bind="text: $index() + 1"></span>] <span data-bind="text: tenGT"></span><span data-bind="visible: tacGia">, <span data-bind="text: tacGia"></span></span><span data-bind="visible: namXuatBan">, <span data-bind="text: namXuatBan"></span></span><span data-bind="visible: nhaXuatBan">, <span data-bind="text: nhaXuatBan"></span></span></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<input type="hidden" id="hdnLang" value="en" />
+<input type="hidden" id="hdnPath" value="/dai-hoc/thong-tin-mon-hoc" />
+<input type="hidden" id="hdnRoot" value="" />
+
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8L_FKR1i7eVEp5sWe0s3aH0Eez4UI2Rn6TztxfKOMvNmsf5yfYCHnoHn9qE_Jvmi4-RzXizzS-Y_ojlHpmtQx3yJQHgT7jxE2cJIf8yiDW4OBXQdDsMxoOXFOllQI31oLlbfyT8zjoQMIZEwLb3qJss" />
+</div>
+
+
+
+
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/theme.js"></script>
+<script src="/lib/jquery/3.6.1/jquery.min.js"></script>
+<script src="/lib/js-cookie/3.0.5/js.cookie.min.js"></script>
+<script src="/lib/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+<script src="/lib/knockout/3.5.1/knockout.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+<script src="/js/shared.js?v=3ke52_-GmyW2BoS6E1XsBPA4KT81Vr3ZUHkJivEvCXM"></script>
+<script src="/js/site.js?v=3-2xvLqmnblNswsn7Gj1_xedPsPvyn3rDbUKK4AN_pQ"></script>
+
+    
+    
+<script src="/js/components/courses.js?v=tN1aouM87dzXV0FlWKXAcpdyMy9i-p6FL4AFpeMpfGE"></script>
+
+
+</body>
+<!--end::Body-->
+
+</html>
